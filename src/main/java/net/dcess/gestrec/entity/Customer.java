@@ -6,7 +6,13 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Past;
 import java.time.LocalDate;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Customer implements Serializable {
 
@@ -33,63 +39,4 @@ public class Customer implements Serializable {
     @Column(nullable = false)
     private String customerId;
 
-    public Customer() {
-
-    }
-
-    public Customer(String firstName, String lastName, String email, LocalDate dayOfBirth, String customerId) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.dayOfBirth = dayOfBirth;
-        this.customerId = customerId;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public LocalDate getDayOfBirth() {
-        return dayOfBirth;
-    }
-
-    public void setDayOfBirth(LocalDate dayOfBirth) {
-        this.dayOfBirth = dayOfBirth;
-    }
-
-    public String getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
-    }
 }

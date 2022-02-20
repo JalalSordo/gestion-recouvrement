@@ -11,7 +11,9 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
+import lombok.Data;
 
+@Data
 @Named
 @ViewScoped
 public class CustomersBacking implements Serializable {
@@ -44,27 +46,4 @@ public class CustomersBacking implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Update successful"));
     }
 
-    public List<Customer> getCustomers() {
-        return customers;
-    }
-
-    public void setCustomers(List<Customer> customers) {
-        this.customers = customers;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public CustomerManager getCustomerManager() {
-        return customerManager;
-    }
-
-    public void setCustomerManager(CustomerManager customerManager) {
-        this.customerManager = customerManager;
-    }
 }
