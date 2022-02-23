@@ -15,11 +15,7 @@ import lombok.Data;
  */
 @Data
 public class LoginRequest implements Serializable {
-    @Column(nullable = false)
-    @NotEmpty
     private String username;
-    
-    @Column(nullable = false)
-    @NotEmpty
+
     private String password;
 }
