@@ -51,7 +51,6 @@ public class AccountManager {
         accounts.forEach(entityManager::merge);
     }
 
-
 public List<Account> findByUsernameAndPassword(){
 Query query=entityManager.createQuery("select a from a where a.username:u and a.password:p");   
 query.setParameter("u", this);
