@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">>
+    <head>
+         <h:outputStylesheet>
+            th, td {
+                text-align: center;
+            }
+
+            h3 {
+                margin-top: 0;
+                text-align: center;
+            }
+
+            input[type="text"] {
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing:border-box;
+                -moz-box-sizing: border-box;
+            }
+
+        </h:outputStylesheet>
+    </head>
+    <body>
+        
+        
+       
+            
+                <p:outputPanel>
+            <h3>Invoices</h3>
+            <div class="ui-g">
+                <div class="ui-g-2"/>
+                <div class="ui-g-8">
+                    <h:form id="invoices">
+                         <p:growl id="growl" sticky="true" />
+
+                        <p:dataTable id="invoiceList" var="invoice" value="#{invoicesBacking.invoice}">
+                            <p:column headerText="Id">
+                                <h:outputText value="#{invoice.id}"/>
+                            </p:column>
+
+                            <p:column headerText="Customer">
+                                <p:inputText id="customersInput" value="#{invoice.customer}"/>
+                            </p:column>
+
+                            <p:column headerText="Amount">
+                                <p:inputText id="AmountInput" value="#{invoice.amount}"/>
+                            </p:column>
+
+                            <p:column headerText="Due Date">
+                                <h:outputText value="#{invoice.dueDate}">
+                                    <f:convertDateTime type="localDate" pattern="dd.MM.yyyy"/>
+                                </h:outputText>
+                            </p:column>
+
+                            <p:column headerText="Description">
+                                <h:outputText value="#{invoice.description}"/>
+                            </p:column>
+                            
+                            <p:column headerText="Creation Date">
+                                <h:outputText value="#{invoice.creationDate}">
+                                    <f:convertDateTime type="localDate" pattern="dd.MM.yyyy"/>
+                                </h:outputText>
+                            </p:column>
+
+                            <p:column>
+                                <p:commandButton update="invoiceList" value="Delete" icon="ui-icon-closethick"
+                                                 action="#{invoicesBacking.delete(invoice)}"
+                                                 styleClass="ui-priority-primary">
+                                </p:commandButton>
+                            </p:column>
+                        </p:dataTable>
+                        <br/>
+                        <p:commandButton style="float: right" id="save" value="Save" styleClass="ui-priority-primary"
+                                         action="#{invoicesBacking.update}" icon="ui-icon-disk" update="growl">
+                            <f:ajax execute="@form" render="@form"/>
+                        </p:commandButton>
+                    </h:form>
+                </div>
+                <div class="ui-g-2">
+                </div>
+            </div>
+            <h3>Create a new Invoice</h3>
+            <div class="ui-g">
+                <div class="ui-g-2">
+                </div>
+                <div class="ui-g-8">
+                    <h:form id="add">
+                        <h:panelGrid columns="3" cellpadding="5" style="margin: 0 auto;">
+                            <p:outputLabel for="customer" value="Customer"/>
+                            <p:inputText id="customer" value="#{invoicesBacking.invoice.customer}"/>
+                            <p:message for="customer"/>
+
+                            <p:outputLabel for="amount" value="Amount"/>
+                            <p:inputText id="amount"
+                                         value="#{invoicesBacking.invoice.amount}">
+                            </p:inputText>
+                            <p:message for="amount"/>
+
+                            <p:outputLabel for="dueDate" value="Due Date"/>
+                            <p:calendar id="dueDate"
+                                        value="#{invoicesBacking.invoice.dueDate}" pattern="dd.MM.yyyy"
+                                        mask="true">
+                                <f:convertDateTime type="localDate" pattern="dd.MM.yyyy"/>
+                            </p:calendar>
+                            <p:message for="dueDate"/>
+                            
+                            <p:outputLabel for="description" value="Description"/>
+                            <p:inputText id="description"
+                                         value="#{invoicesBacking.invoice.description}">
+                            </p:inputText>
+                            <p:message for="description"/>
+
+                            <p:outputLabel for="creationDate" value="Creation Date"/>
+                            <p:calendar id="creationDate"
+                                        value="#{invoicesBacking.invoice.creationDate}" pattern="dd.MM.yyyy"
+                                        mask="true">
+                                <f:convertDateTime type="localDate" pattern="dd.MM.yyyy"/>
+                            </p:calendar>
+                            <p:message for="creationDate"/>
+
+                            <p:commandButton update="@form :invoices:invoiceList" value="Add"
+                                             action="#{invoicesBacking.add}">
+                            </p:commandButton>
+                        </h:panelGrid>
+                    </h:form>
+                </div>
+                <div class="ui-g-2">
+                </div>
+            </div>
+        </p:outputPanel>
+    </body>
+</html>
