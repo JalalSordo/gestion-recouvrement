@@ -9,20 +9,20 @@
                 <p:growl id="messages"/>
 
                 <p:menubar>
-                    <p:menuitem value="Home" url="./" style="margin-right: 20px;"/>
+                    <p:menuitem value="Home" url="../" style="margin-right: 20px;"/>
                     <p:submenu label="Invoices" >
-                        <p:menuitem value="New" url="./customers.xhtml" />
-                        <p:menuitem value="open" url="./customers.xhtml" />
+                        <p:menuitem value="New" url="#{request.contextPath}/secured/newInvoice.xhtml" />
+                        <p:menuitem value="Open" url="#{request.contextPath}/secured/invoices.xhtml" />
                     </p:submenu>
 
-                    <p:submenu label="Customers" icon="pi pi-pencil">
-                        <p:menuitem value="New" url="./customers.xhtml" />
-                        <p:menuitem value="open" url="./customers.xhtml" />
+                    <p:submenu label="Customers" >
+                        <p:menuitem value="New" url="#{request.contextPath}/secured/newCustomer.xhtml" />
+                        <p:menuitem value="Open" url="#{request.contextPath}/secured/customers.xhtml" />
                     </p:submenu>
 
-                    <p:submenu label="Users" icon="pi pi-question">
-                        <p:menuitem value="New" url="./customers.xhtml" />
-                        <p:menuitem value="open" url="./customers.xhtml" />
+                    <p:submenu label="Users" >
+                        <p:menuitem value="New" url="#{request.contextPath}/secured/newUser.xhtml" />
+                        <p:menuitem value="Open" url="#{request.contextPath}/secured/users.xhtml" />
                     </p:submenu>
 
 

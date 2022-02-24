@@ -16,7 +16,14 @@
     </servlet-mapping>
 
     <welcome-file-list>
-        <welcome-file>/index.xhtml</welcome-file>
+        <welcome-file>/secured/index.xhtml</welcome-file>
     </welcome-file-list>
-
+    <filter>
+        <filter-name>loginFilter</filter-name>
+        <filter-class>net.dcess.gestrec.boundary.filters.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>loginFilter</filter-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </filter-mapping>
 </web-app>
