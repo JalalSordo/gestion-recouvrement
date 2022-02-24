@@ -5,8 +5,13 @@
 package net.dcess.gestrec.entity;
 
 
+
 import java.time.LocalDate;
 import javax.persistence.Column;
+import java.io.Serializable;
+import java.time.LocalDate;
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,7 +27,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Invoice {
+@Entity
+public class Invoice implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,6 +1,6 @@
 package net.dcess.gestrec.boundary;
 
-import net.dcess.gestrec.control.CustomerManager;
+import net.dcess.gestrec.dao.CustomerDao;
 import net.dcess.gestrec.entity.Customer;
 
 import javax.annotation.PostConstruct;
@@ -23,7 +23,7 @@ public class CustomersBacking implements Serializable {
     private Customer customer = new Customer();
 
     @Inject
-    private CustomerManager customerManager;
+    private CustomerDao customerManager;
 
     @PostConstruct
     public void init() {
