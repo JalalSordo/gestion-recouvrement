@@ -5,6 +5,9 @@
 package net.dcess.gestrec.entity;
 
 
+
+import java.time.LocalDate;
+import javax.persistence.Column;
 import java.io.Serializable;
 import java.time.LocalDate;
 import javax.persistence.Column;
