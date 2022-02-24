@@ -1,4 +1,4 @@
-package net.dcess.gestrec.control;
+package net.dcess.gestrec.dao;
 
 import net.dcess.gestrec.entity.Customer;
 
@@ -7,14 +7,18 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.UUID;
+import lombok.extern.slf4j.Slf4j;
 
 @Stateless
-public class CustomerManager {
+@Slf4j
+public class CustomerDao {
 
     @PersistenceContext
     private EntityManager entityManager;
 
     public List<Customer> loadAllCustomers() {
+        log.info("+loadAllCustomers");
+        log.debug("+tesddt");
         return this.entityManager.createQuery("SELECT c FROM Customer c", Customer.class).getResultList();
     }
 

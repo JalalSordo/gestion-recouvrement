@@ -5,18 +5,27 @@
 package net.dcess.gestrec.entity;
 
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
  * @author Nexxion Sarl
  */
-public class Invoice {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+public class Invoice implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

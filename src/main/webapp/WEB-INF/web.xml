@@ -2,10 +2,7 @@
 <web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
 
-    <context-param>
-        <param-name>primefaces.THEME</param-name>
-        <param-value>bootstrap</param-value>
-    </context-param>
+  
 
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
@@ -19,7 +16,14 @@
     </servlet-mapping>
 
     <welcome-file-list>
-        <welcome-file>customers.xhtml</welcome-file>
+        <welcome-file>/secured/index.xhtml</welcome-file>
     </welcome-file-list>
-
+    <filter>
+        <filter-name>loginFilter</filter-name>
+        <filter-class>net.dcess.gestrec.boundary.filters.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>loginFilter</filter-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </filter-mapping>
 </web-app>

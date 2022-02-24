@@ -4,7 +4,7 @@
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <class>net.dcess.gestrec.entity.Customer</class>
     <class>net.dcess.gestrec.entity.Invoice</class>
-    <class>net.dcess.gestrec.entity.Account</class>
+    <class>net.dcess.gestrec.entity.User</class>
     <properties>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3307/gestion_recouvrement?serverTimezone=UTC"/>
