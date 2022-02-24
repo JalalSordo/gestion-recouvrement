@@ -1,4 +1,3 @@
-
 package net.dcess.gestrec.control;
 
 import java.util.List;
@@ -8,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import net.dcess.gestrec.entity.Account;
-import org.springframework.data.repository.query.Param;
 
 
 @Stateless
@@ -48,11 +46,11 @@ public class AccountManager {
         accounts.forEach(entityManager::merge);
     }
 
-public List<Account> findByUsernameAndPassword(){
+public List<Account> getUserByUsernameAndPassword(){
+
 Query query=entityManager.createQuery("select a from a where a.username:u and a.password:p");   
 query.setParameter("u", this);
 query.setParameter("p", this);
 return query.getResultList();
     }
-
 }
