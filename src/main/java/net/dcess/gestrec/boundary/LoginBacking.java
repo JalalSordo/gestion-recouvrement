@@ -28,7 +28,7 @@ public class LoginBacking implements Serializable {
     public static final String HOME_PAGE_REDIRECT
             = "/secured/index.xhtml?faces-redirect=true";
     public static final String LOGOUT_PAGE_REDIRECT
-            = "/login.xhtml?faces-redirect=true";
+            = "/login.xhtml";
 
     private String userId;
     private String userPassword;
