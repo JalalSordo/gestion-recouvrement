@@ -43,7 +43,7 @@
                                 </p:column>
 
                                 <p:column headerText="Customer">
-                                    <p:inputText id="customersInput" value="#{invoice.customer}"/>
+                                    <p:inputText id="customersInput" value="#{invoice.customer.firstName} #{invoice.customer.lastName}"/>
                                 </p:column>
 
                                 <p:column headerText="Amount">
