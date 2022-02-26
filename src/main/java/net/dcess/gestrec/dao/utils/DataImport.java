@@ -41,8 +41,8 @@ public class DataImport {
         this.entityManager.persist(customerSofia);
 
         this.entityManager.persist(createUser("Jalal", "Sordo", "admin", "admin", "js@live.com"));
-        this.entityManager.persist(createUser("Ann", "Brook", "admin", "admin", "ann@live.com"));
-        this.entityManager.persist(createUser("Olivia", "Lucas", "admin", "admin", "olivial@live.com"));
+        this.entityManager.persist(createUser("Ann", "Brook", "adminab", "adminab", "ann@live.com"));
+        this.entityManager.persist(createUser("Olivia", "Lucas", "adminol", "adminol", "olivial@live.com"));
 
         this.entityManager.persist(createInvoice("Bon de commande N10256", customerPhilip, 1000.0));
         this.entityManager.persist(createInvoice("Bon de commande N39576", customerKylie, 2000.0));
