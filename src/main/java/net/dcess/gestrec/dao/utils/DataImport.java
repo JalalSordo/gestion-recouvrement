@@ -42,12 +42,17 @@ public class DataImport {
         this.entityManager.persist(customerSofia);
 
         this.entityManager.persist(createUser("Jalal", "Sordo", "admin", "admin", "js@live.com"));
+        this.entityManager.persist(createInvoice("Bon de commande N10256", customerPhilip, 1000.0, LocalDate.of(2022, 9,
+                13)));
+        this.entityManager.persist(createInvoice("Bon de commande N10255", customerPhilip, 1000.0, LocalDate.of(2022, 2,
+                13)));
+        this.entityManager.persist(createInvoice("Bon de commande N10254", customerPhilip, 1000.0, LocalDate.of(2022, 1,
+                13)));
+        this.entityManager.persist(createInvoice("Bon de commande N10254", customerPhilip, 1000.0, LocalDate.now()));
+
         this.entityManager.persist(createUser("Ann", "Brook", "adminab", "adminab", "ann@live.com"));
         this.entityManager.persist(createUser("Olivia", "Lucas", "adminol", "adminol", "olivial@live.com"));
 
-        this.entityManager.persist(createInvoice("Bon de commande N10256", customerPhilip, 1000.0));
-        this.entityManager.persist(createInvoice("Bon de commande N39576", customerKylie, 2000.0));
-        this.entityManager.persist(createInvoice("Bon de commande N10594", customerSofia, 1500.0));
     }
 
     private Customer createCustomer(String firstName, String lastName, String email, LocalDate dayOfBirth) {
@@ -70,13 +75,14 @@ public class DataImport {
         return user;
     }
 
-    private Invoice createInvoice(String description, Customer customer, Double amount) {
+    private Invoice createInvoice(String description, Customer customer, Double amount, LocalDate dueDate) {
         Invoice invoice = new Invoice();
         invoice.setDescription(description);
         invoice.setCustomer(customer);
         invoice.setAmount(amount);
         invoice.setCreationDate(LocalDate.now());
-        invoice.setDueDate(LocalDate.now());
+        invoice.setDueDate(dueDate);
+        invoice.setPaid(Boolean.FALSE);
         return invoice;
     }
 }

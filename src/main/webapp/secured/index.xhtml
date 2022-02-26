@@ -5,12 +5,72 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <f:view>
         <h:head>
+            <style type="text/css">
+                .danger {
+                    background-color: #FF0000 !important;
+                }
+                .warning {
+                    background-color: #FF8000 !important;
+                }
+                .noproblem {
+                    background-color: #008000 !important;
+                }
+            </style>
             <title>Dashboard</title>
         </h:head>
         <h:body>
             <ui:include src="/secured/menuBar.xhtml" />
             <p:outputPanel>
                 <h3>Dashboard</h3>
+                <div class="ui-g">
+                    <div class="ui-g-2"/>
+                    <div class="ui-g-8">
+                        <h:form id="invoices">
+                            <p:growl id="growl" sticky="true" />
+
+                            <p:dataTable id="invoiceList" var="invoice" value="#{indexBacking.invoices}" rowStyleClass="#{invoice.dueDate lt indexBacking.dueDate ? 'danger' : invoice.dueDate le indexBacking.orangeDate ? 'warning' : 'noproblem'}">
+                                <p:column headerText="Id">
+                                    <h:outputText value="#{invoice.id}"/>
+                                </p:column>
+
+                                <p:column headerText="Customer">
+                                    <h:outputText value="#{invoice.customer.firstName} #{invoice.customer.lastName}"/>
+                                </p:column>
+
+                                <p:column headerText="Amount">
+                                    <h:outputText value="#{invoice.amount}"/>
+                                </p:column>
+
+                                <p:column headerText="Due Date">
+                                    <h:outputText value="#{invoice.dueDate}">
+                                        <f:convertDateTime type="localDate" pattern="dd.MM.yyyy"/>
+                                    </h:outputText>
+                                </p:column>
+
+                                <p:column headerText="Description">
+                                    <h:outputText value="#{invoice.description}"/>
+                                </p:column>
+
+                                <p:column headerText="Creation Date">
+                                    <h:outputText value="#{invoice.creationDate}">
+                                        <f:convertDateTime type="localDate" pattern="dd.MM.yyyy"/>
+                                    </h:outputText>
+                                </p:column>
+                                
+                                 <p:column>
+                                    <p:commandButton update="invoiceList" value="Paid" icon="ui-icon-check"
+                                                     action="#{indexBacking.paid(invoice)}"
+                                                     styleClass="ui-priority-primary">
+                                    </p:commandButton>
+                                </p:column>
+
+                            </p:dataTable>
+                            <br/>                            
+                        </h:form>
+                    </div>
+                    <div class="ui-g-2">
+                    </div>
+                </div>
                 <p:outputLabel value="Welcome to Gestion Recouvrement v1.0.0"/>
             </p:outputPanel>
         </h:body>
