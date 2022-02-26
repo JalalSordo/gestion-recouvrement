@@ -28,9 +28,9 @@ public class DataImport {
         this.entityManager.persist(createCustomer("John", "Doe", "doe@john.de", LocalDate.of(1990, 12, 12)));
         this.entityManager.persist(createCustomer("Max", "Mustermann", "max@gmail.com", LocalDate.of(1985, 4,
                 20)));
-        this.entityManager.persist(createCustomer("Jan", "Temple", "jan.temple@hotmail.com", LocalDate.of(1980, 03, 15)));
-        this.entityManager.persist(createCustomer("Robert", "Furlan", "robert.furlan@hotmail.com", LocalDate.of(1988, 08, 20)));
-        this.entityManager.persist(createCustomer("Margaret", "Wooten", "margaret.ten@hotmail.com", LocalDate.of(1992, 05, 25)));
+        this.entityManager.persist(createCustomer("Jan", "Temple", "jan.temple@hotmail.com", LocalDate.of(1980, 3, 15)));
+        this.entityManager.persist(createCustomer("Robert", "Furlan", "robert.furlan@hotmail.com", LocalDate.of(1988, 8, 20)));
+        this.entityManager.persist(createCustomer("Margaret", "Wooten", "margaret.ten@hotmail.com", LocalDate.of(1992, 5, 25)));
         
         Customer customerPhilip = createCustomer("Philip", "Riecks", "philip@riecks.de", LocalDate.of(1995, 9, 13));
         this.entityManager.persist(customerPhilip);

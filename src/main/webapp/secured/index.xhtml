@@ -7,13 +7,13 @@
         <h:head>
             <style type="text/css">
                 .danger {
-                    background-color: #FF0000 !important;
+                    background-color: #ff7c62 !important;
                 }
                 .warning {
-                    background-color: #FF8000 !important;
+                    background-color: #f18b29 !important;
                 }
                 .noproblem {
-                    background-color: #008000 !important;
+                    background-color: #67fb67  !important;
                 }
             </style>
             <title>Dashboard</title>
@@ -21,7 +21,15 @@
         <h:body>
             <ui:include src="/secured/menuBar.xhtml" />
             <p:outputPanel>
+                <h1>Bienvenue à Gestion Recouvrement v1.0.0</h1>
                 <h3>Dashboard</h3>
+                <p>Voici la liste des factures que les clients doivent payer</p>
+                <ul>
+                    <li>Si une date d'échéance est inférieure à une semaine, l'élément est affiché en orange</li>
+                    <li>Si plus d'une semaine l'article est affiché en orange</li>
+                    <li>Si une date d'échéance est aujourd'hui ou après l'élément est affiché en rouge</li>
+                </ul>
+                <p>De plus, vous pouvez marquer celui payé avec le bouton correspondant sur chaque article</p>
                 <div class="ui-g">
                     <div class="ui-g-2"/>
                     <div class="ui-g-8">
@@ -56,8 +64,8 @@
                                         <f:convertDateTime type="localDate" pattern="dd.MM.yyyy"/>
                                     </h:outputText>
                                 </p:column>
-                                
-                                 <p:column>
+
+                                <p:column>
                                     <p:commandButton update="invoiceList" value="Paid" icon="ui-icon-check"
                                                      action="#{indexBacking.paid(invoice)}"
                                                      styleClass="ui-priority-primary">
@@ -71,7 +79,6 @@
                     <div class="ui-g-2">
                     </div>
                 </div>
-                <p:outputLabel value="Welcome to Gestion Recouvrement v1.0.0"/>
             </p:outputPanel>
         </h:body>
     </f:view>
