@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-       xmlns:f="http://java.sun.com/jsf/core"
-       xmlns:h="http://java.sun.com/jsf/html"
-       xmlns:p="http://primefaces.org/ui">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
         <title>Login</title>
@@ -11,31 +11,30 @@
     </h:head>
 
     <h:body>
+        <p:outputPanel class="text-align: center;">
+            <h:form id="login-form" class="p-col-1">
+                <p:messages id="messages" showDetail="false" />
+                <p:panel id="panel" header="Login" class="box">
+                    <h:panelGrid columns="3" cellpadding="5">
+                        <p:outputLabel for="user-name" value="User Name:" />
+                        <p:inputText id="user-name" value="#{loginBacking.userId}"
+                                     required="true" label="User name">
+                            <f:validateLength minimum="3" />
+                        </p:inputText>
+                        <p:message for="user-name" display="icon" />
 
-        <h:form id="login-form">
-            <p:messages id="messages" showDetail="false" />
+                        <p:outputLabel for="password" value="Password:" />
+                        <p:password id="password" value="#{loginBacking.userPassword}"
+                                    required="true" label="Password">
+                            <f:validateLength minimum="3" />
+                        </p:password>
+                        <p:message for="password" display="icon" />
+                    </h:panelGrid>
 
-            <p:panel id="panel" header="Login">
-                <h:panelGrid columns="3" cellpadding="5">
-                    <p:outputLabel for="user-name" value="User Name:" />
-                    <p:inputText id="user-name" value="#{loginBacking.userId}"
-                                 required="true" label="User name">
-                        <f:validateLength minimum="3" />
-                    </p:inputText>
-                    <p:message for="user-name" display="icon" />
-
-                    <p:outputLabel for="password" value="Password:" />
-                    <p:password id="password" value="#{loginBacking.userPassword}"
-                                required="true" label="Password">
-                        <f:validateLength minimum="3" />
-                    </p:password>
-                    <p:message for="password" display="icon" />
-                </h:panelGrid>
-
-                <p:commandButton id="login" value="Login"
-                                 update="panel messages" action="#{loginBacking.login()}" />
-            </p:panel>
-        </h:form>
-
+                    <p:commandButton id="login" value="Login"
+                                     update="panel messages" action="#{loginBacking.login()}" />
+                </p:panel>
+            </h:form>
+        </p:outputPanel>
     </h:body>
 </html>

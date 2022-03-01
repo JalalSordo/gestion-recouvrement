@@ -1,0 +1,79 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <f:view>
+        <h:head>
+        </h:head>
+
+        <h:body>
+            <ui:include src="/secured/menuBar.xhtml" />
+            <p:outputPanel>
+                <center>
+                    <h3>Create a new Invoice</h3>
+                </center>
+                <div class="ui-g">
+                    <div class="ui-g-12">
+                        <h:form id="add">
+                            <p:growl id="growl" sticky="true"/>
+                            <h:panelGrid columns="3" cellpadding="5" style="margin: 0 auto;">
+                                <p:outputLabel for="customer" value="Customer"/>
+
+                                <p:selectOneMenu id="customer" 
+                                                 required="true"
+                                                 converter="omnifaces.SelectItemsConverter" 
+                                                 value="#{invoicesBacking.selectedCustomer}">
+                                    <f:selectItem itemLabel="Choose one..." itemValue="#{null}"/>
+                                    <f:selectItems value="#{invoicesBacking.customers}"
+                                                   var="customer"
+                                                   itemLabel="#{customer.firstName} #{customer.lastName}"
+                                                   itemValue="#{customer}"
+                                                   />
+                                </p:selectOneMenu>
+
+                                <p:message for="customer"/>
+
+                                <p:outputLabel for="amount" value="Amount"/>
+                                <p:spinner id="amount" decimalPlaces="2"
+                                           value="#{invoicesBacking.invoice.amount}"
+                                           suffix="DH" min="0" stepFactor="50">
+                                </p:spinner>
+                                <p:message for="amount"/>
+
+                                <p:outputLabel for="dueDate" value="Due Date"/>
+                                <p:calendar id="dueDate"
+                                            value="#{invoicesBacking.invoice.dueDate}" pattern="dd.MM.yyyy"
+                                            mask="true">
+                                    <f:convertDateTime type="localDate" pattern="dd.MM.yyyy"/>
+                                </p:calendar>
+                                <p:message for="dueDate"/>
+
+                                <p:outputLabel for="description" value="Description"/>
+                                <p:inputText id="description"
+                                             value="#{invoicesBacking.invoice.description}">
+                                </p:inputText>
+                                <p:message for="description"/>
+
+                                <p:outputLabel for="creationDate" value="Creation Date"/>
+                                <p:calendar id="creationDate"
+                                            value="#{invoicesBacking.invoice.creationDate}" pattern="dd.MM.yyyy"
+                                            mask="true">
+                                    <f:convertDateTime type="localDate" pattern="dd.MM.yyyy"/>
+                                </p:calendar>
+                                <p:message for="creationDate"/>
+                                <center>
+                                    <p:commandButton update="@form" value="Add"
+                                                     action="#{invoicesBacking.add}">
+                                    </p:commandButton>
+                                </center>
+                            </h:panelGrid>
+                        </h:form>
+                    </div>
+                    <div class="ui-g-2">
+                    </div>
+                </div>
+            </p:outputPanel>
+        </h:body>
+    </f:view>
+</html>

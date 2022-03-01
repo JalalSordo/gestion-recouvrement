@@ -5,32 +5,13 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <f:view>
         <h:head>
-            <h:outputStylesheet>
-                th, td {
-                text-align: center;
-                }
-
-                h3 {
-                margin-top: 0;
-                text-align: center;
-                }
-
-                input[type="text"] {
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing:border-box;
-                -moz-box-sizing: border-box;
-                }
-
-            </h:outputStylesheet>
         </h:head>
         <h:body>
             <ui:include src="/secured/menuBar.xhtml" />
             <p:outputPanel>
-                <h3>Customer</h3>
+                <center><h3>Customers</h3></center>
                 <div class="ui-g">
-                    <div class="ui-g-2"/>
-                    <div class="ui-g-8">
+                    <div class="ui-g-12">
                         <h:form id="customers">
                             <p:growl id="growl" sticky="true" />
 
@@ -73,46 +54,6 @@
                                              action="#{customersBacking.update}" icon="ui-icon-disk" update="growl">
                                 <f:ajax execute="@form" render="@form"/>
                             </p:commandButton>
-                        </h:form>
-                    </div>
-                    <div class="ui-g-2">
-                    </div>
-                </div>
-                <h3>Create a new customer</h3>
-                <div class="ui-g">
-                    <div class="ui-g-2">
-                    </div>
-                    <div class="ui-g-8">
-                        <h:form id="add">
-                            <h:panelGrid columns="3" cellpadding="5" style="margin: 0 auto;">
-                                <p:outputLabel for="firstName" value="First name"/>
-                                <p:inputText id="firstName" value="#{customersBacking.customer.firstName}"/>
-                                <p:message for="firstName"/>
-
-                                <p:outputLabel for="lastName" value="Last name"/>
-                                <p:inputText id="lastName"
-                                             value="#{customersBacking.customer.lastName}">
-                                </p:inputText>
-                                <p:message for="lastName"/>
-
-                                <p:outputLabel for="email" value="E-Mail"/>
-                                <p:inputText id="email"
-                                             value="#{customersBacking.customer.email}">
-                                </p:inputText>
-                                <p:message for="email"/>
-
-                                <p:outputLabel for="dayOfBirth" value="Day of birth"/>
-                                <p:calendar id="dayOfBirth"
-                                            value="#{customersBacking.customer.dayOfBirth}" pattern="dd.MM.yyyy"
-                                            mask="true">
-                                    <f:convertDateTime type="localDate" pattern="dd.MM.yyyy"/>
-                                </p:calendar>
-                                <p:message for="dayOfBirth"/>
-
-                                <p:commandButton update="@form :customers:customerList" value="Add"
-                                                 action="#{customersBacking.add}">
-                                </p:commandButton>
-                            </h:panelGrid>
                         </h:form>
                     </div>
                     <div class="ui-g-2">

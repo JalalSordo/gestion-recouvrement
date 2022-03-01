@@ -39,11 +39,12 @@ public class CustomersBacking implements Serializable {
         customerManager.addNewCustomer(customer);
         this.customers = customerManager.loadAllCustomers();
         this.customer = new Customer();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Customer added successfully!"));
     }
 
     public void update() {
         customerManager.update(customers);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Update successful"));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Update successful!"));
     }
 
 }

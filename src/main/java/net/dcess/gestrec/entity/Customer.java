@@ -39,4 +39,9 @@ public class Customer implements Serializable {
     @Column(nullable = false)
     private String customerId;
 
+
+    @Override
+    public String toString() {
+        return String.format("%s[id=%d]", getClass().getSimpleName(), getId());
+    }
 }

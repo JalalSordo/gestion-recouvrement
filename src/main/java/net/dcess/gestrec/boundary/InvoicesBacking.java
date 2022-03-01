@@ -11,7 +11,9 @@ import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 import lombok.Data;
+import net.dcess.gestrec.dao.CustomerDao;
 import net.dcess.gestrec.dao.InvoiceDao;
+import net.dcess.gestrec.entity.Customer;
 
 /**
  *
@@ -24,14 +26,22 @@ public class InvoicesBacking implements Serializable {
 
     private List<Invoice> invoices;
 
+    private List<Customer> customers;
+
     private Invoice invoice = new Invoice();
+
+    private Customer selectedCustomer = null;
 
     @Inject
     private InvoiceDao invoiceDao;
 
+    @Inject
+    private CustomerDao customerDao;
+
     @PostConstruct
     public void init() {
         this.invoices = invoiceDao.loadAllInvoices();
+        this.customers = customerDao.loadAllCustomers();
     }
 
     public void delete(Invoice invoice) {
@@ -40,9 +50,12 @@ public class InvoicesBacking implements Serializable {
     }
 
     public void add() {
+        invoice.setCustomer(selectedCustomer);
         invoiceDao.addNewInvoice(invoice);
         this.invoices = invoiceDao.loadAllInvoices();
         this.invoice = new Invoice();
+        selectedCustomer = null;
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Invoice Added successfully!"));
     }
 
     public void update() {

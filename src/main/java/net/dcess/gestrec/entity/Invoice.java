@@ -1,4 +1,3 @@
-
 package net.dcess.gestrec.entity;
 
 import java.io.Serializable;
@@ -10,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,7 +32,7 @@ public class Invoice implements Serializable {
     private Customer customer;
 
     @Column(nullable = false)
-    private Double amount;
+    private Double amount = 0.0;
 
     @Column(nullable = false)
     private LocalDate dueDate;
@@ -44,7 +42,7 @@ public class Invoice implements Serializable {
 
     @Column(nullable = false)
     private LocalDate creationDate;
-    
+
     @Column(nullable = false)
     private Boolean paid;
 }
