@@ -4,33 +4,14 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <f:view>
-        <h:head>
-            <h:outputStylesheet>
-                th, td {
-                text-align: center;
-                }
-
-                h3 {
-                margin-top: 0;
-                text-align: center;
-                }
-
-                input[type="text"] {
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing:border-box;
-                -moz-box-sizing: border-box;
-                }
-
-            </h:outputStylesheet>
+        <h:head>            
         </h:head>
         <h:body>
             <ui:include src="/secured/menuBar.xhtml" />
             <p:outputPanel>
-                <h3>User</h3>
+                <center><h3>User</h3></center>
                 <div class="ui-g">
-                    <div class="ui-g-2"/>
-                    <div class="ui-g-8">
+                    <div class="ui-g-12">
                         <h:form id="users">
                             <p:growl id="growl" sticky="true" />
 

@@ -18,15 +18,15 @@
                                 <p:outputLabel for="username" value="Username"/>
                                 <p:inputText id="username" value="#{usersBacking.user.username}"/>
                                 <p:message for="username"/>
-                                
+
                                 <p:outputLabel for="password" value="Password"/>
                                 <p:password id="password" value="#{usersBacking.user.password}" match="password2" feedback="true"/>
                                 <p:message for="password"/>
-                                
+
                                 <p:outputLabel for="password" value="Confirm Password"/>
                                 <p:password id="password2" value="#{usersBacking.user.password}"/>
                                 <p:message for="password"/>
-                                
+
                                 <p:outputLabel for="firstName" value="First name"/>
                                 <p:inputText id="firstName" value="#{usersBacking.user.firstName}"/>
                                 <p:message for="firstName"/>
@@ -42,10 +42,10 @@
                                              value="#{usersBacking.user.email}">
                                 </p:inputText>
                                 <p:message for="email"/>
-                                
-                                <p:commandButton update="@form" value="Add"
-                                                 action="#{usersBacking.add}">
-                                </p:commandButton>
+
+                                <center> <p:commandButton update="@form" value="Add"
+                                                          action="#{usersBacking.add}">
+                                    </p:commandButton></center>
                             </h:panelGrid>
                         </h:form>
                     </div>
