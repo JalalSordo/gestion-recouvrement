@@ -4,33 +4,14 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <f:view>
-        <h:head>
-            <h:outputStylesheet>
-                th, td {
-                text-align: center;
-                }
-
-                h3 {
-                margin-top: 0;
-                text-align: center;
-                }
-
-                input[type="text"] {
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing:border-box;
-                -moz-box-sizing: border-box;
-                }
-
-            </h:outputStylesheet>
+        <h:head>            
         </h:head>
         <h:body>
             <ui:include src="/secured/menuBar.xhtml" />
             <p:outputPanel>
-                <h3>User</h3>
+                <center><h3>User</h3></center>
                 <div class="ui-g">
-                    <div class="ui-g-2"/>
-                    <div class="ui-g-8">
+                    <div class="ui-g-12">
                         <h:form id="users">
                             <p:growl id="growl" sticky="true" />
 
@@ -38,11 +19,11 @@
                                 <p:column headerText="Id">
                                     <h:outputText value="#{user.id}"/>
                                 </p:column>
-                                
+
                                 <p:column headerText="Username">
                                     <p:inputText id="usernameInput" value="#{user.username}"/>
                                 </p:column>
-                                
+
                                 <p:column headerText="Password">
                                     <p:password id="passwordInput" value="#{user.password}" redisplay="true"/>
                                 </p:column>
@@ -75,51 +56,7 @@
                     </div>
                     <div class="ui-g-2">
                     </div>
-                </div>
-                <h3>Create a new user</h3>
-                <div class="ui-g">
-                    <div class="ui-g-2">
-                    </div>
-                    <div class="ui-g-8">
-                        <h:form id="add">
-                            <h:panelGrid columns="3" cellpadding="5" style="margin: 0 auto;">
-                                <p:outputLabel for="username" value="Username"/>
-                                <p:inputText id="username" value="#{usersBacking.user.username}"/>
-                                <p:message for="username"/>
-                                
-                                <p:outputLabel for="password" value="Password"/>
-                                <p:password id="password" value="#{usersBacking.user.password}" match="password2" feedback="true"/>
-                                <p:message for="password"/>
-                                
-                                <p:outputLabel for="password" value="Confirm Password"/>
-                                <p:password id="password2" value="#{usersBacking.user.password}"/>
-                                <p:message for="password"/>
-                                
-                                <p:outputLabel for="firstName" value="First name"/>
-                                <p:inputText id="firstName" value="#{usersBacking.user.firstName}"/>
-                                <p:message for="firstName"/>
-
-                                <p:outputLabel for="lastName" value="Last name"/>
-                                <p:inputText id="lastName"
-                                             value="#{usersBacking.user.lastName}">
-                                </p:inputText>
-                                <p:message for="lastName"/>
-
-                                <p:outputLabel for="email" value="E-Mail"/>
-                                <p:inputText id="email"
-                                             value="#{usersBacking.user.email}">
-                                </p:inputText>
-                                <p:message for="email"/>
-                                
-                                <p:commandButton update="@form :users:userList" value="Add"
-                                                 action="#{usersBacking.add}">
-                                </p:commandButton>
-                            </h:panelGrid>
-                        </h:form>
-                    </div>
-                    <div class="ui-g-2">
-                    </div>
-                </div>
+                </div>          
             </p:outputPanel>
         </h:body>
     </f:view>

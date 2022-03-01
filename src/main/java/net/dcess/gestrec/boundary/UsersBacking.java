@@ -47,11 +47,12 @@ public class UsersBacking implements Serializable {
         userManager.addNewUser(user);
         this.users = userManager.loadAllUsers();
         this.user = new User();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("User added successfully!"));
     }
 
     public void update() {
         userManager.update(users);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Update successful"));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Update successful!"));
     }
 
 }
