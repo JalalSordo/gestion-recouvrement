@@ -63,5 +63,4 @@ public class InvoiceDao {
     public void update(Invoice invoice) {
         entityManager.merge(invoice);
     }
-
 }
