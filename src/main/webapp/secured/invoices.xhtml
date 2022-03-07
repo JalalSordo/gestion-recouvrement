@@ -26,7 +26,17 @@
                                 </p:column>
 
                                 <p:column headerText="Customer">
-                                    <p:inputText id="customersInput" value="#{invoice.customer.firstName} #{invoice.customer.lastName}"/>
+                                    <p:selectOneMenu id="customer" 
+                                                 required="true"
+                                                 converter="omnifaces.SelectItemsConverter" 
+                                                 value="#{invoice.customer}">
+                                        <f:selectItem itemLabel="#{invoice.customer.firstName} #{invoice.customer.lastName}" itemValue="#{invoice.customer}"/>
+                                    <f:selectItems value="#{invoicesBacking.customers}"
+                                                   var="customer"
+                                                   itemLabel="#{customer.firstName} #{customer.lastName}"
+                                                   itemValue="#{customer}"
+                                                   />
+                                </p:selectOneMenu>
                                 </p:column>
 
                                 <p:column headerText="Amount">
