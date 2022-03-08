@@ -5,9 +5,7 @@ package net.dcess.gestrec.boundary.filters;
  * @author jalal sordo
  */
 import java.io.IOException;
-import java.util.Map;
 import javax.faces.application.ResourceHandler;
-import javax.faces.context.SessionMap;
 import javax.inject.Inject;
 
 import javax.servlet.Filter;
@@ -19,7 +17,6 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import net.dcess.gestrec.boundary.LoginBacking;
 
@@ -42,7 +39,7 @@ public class LoginFilter implements Filter {
 
         boolean loggedIn = auth != null && auth.isLoggedIn();
         boolean loginRequest = request.getRequestURI().equals(loginURL);
-        boolean resourceRequest = request.getRequestURI().startsWith(request.getContextPath() + "/faces" + ResourceHandler.RESOURCE_IDENTIFIER);
+        boolean resourceRequest = request.getRequestURI().startsWith(request.getContextPath() + ResourceHandler.RESOURCE_IDENTIFIER);
 
         if (loggedIn || loginRequest || resourceRequest) {
             if (!resourceRequest) {
