@@ -36,7 +36,10 @@
                         <h:form id="invoices">
                             <p:growl id="growl" sticky="true" />
 
-                            <p:dataTable id="invoiceList" var="invoice" value="#{indexBacking.invoices}" rowStyleClass="#{invoice.dueDate lt indexBacking.dueDate ? 'danger' : invoice.dueDate le indexBacking.orangeDate ? 'warning' : 'noproblem'}">
+                            <p:dataTable id="invoiceList"
+                                         var="invoice"
+                                         value="#{indexBacking.invoices}"
+                                         rowStyleClass="#{invoice.dueDate lt indexBacking.dueDate ? 'danger' : invoice.dueDate le indexBacking.orangeDate ? 'warning' : 'noproblem'}">
                                 <p:column headerText="Id">
                                     <h:outputText value="#{invoice.id}"/>
                                 </p:column>
@@ -66,7 +69,7 @@
                                 </p:column>
 
                                 <p:column>
-                                    <p:commandButton update="invoiceList" value="Paid" icon="ui-icon-check"
+                                    <p:commandButton update="invoiceList" value="Mark as paid" icon="ui-icon-check"
                                                      action="#{indexBacking.paid(invoice)}"
                                                      styleClass="ui-priority-primary">
                                     </p:commandButton>

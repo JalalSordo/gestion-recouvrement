@@ -27,16 +27,16 @@
 
                                 <p:column headerText="Customer">
                                     <p:selectOneMenu id="customer" 
-                                                 required="true"
-                                                 converter="omnifaces.SelectItemsConverter" 
-                                                 value="#{invoice.customer}">
+                                                     required="true"
+                                                     converter="omnifaces.SelectItemsConverter" 
+                                                     value="#{invoice.customer}">
                                         <f:selectItem itemLabel="#{invoice.customer.firstName} #{invoice.customer.lastName}" itemValue="#{invoice.customer}"/>
-                                    <f:selectItems value="#{invoicesBacking.customers}"
-                                                   var="customer"
-                                                   itemLabel="#{customer.firstName} #{customer.lastName}"
-                                                   itemValue="#{customer}"
-                                                   />
-                                </p:selectOneMenu>
+                                        <f:selectItems value="#{invoicesBacking.customers}"
+                                                       var="customer"
+                                                       itemLabel="#{customer.firstName} #{customer.lastName}"
+                                                       itemValue="#{customer}"
+                                                       />
+                                    </p:selectOneMenu>
                                 </p:column>
 
                                 <p:column headerText="Amount">
@@ -44,21 +44,25 @@
                                 </p:column>
 
                                 <p:column headerText="Due Date">
-                                    <h:outputText value="#{invoice.dueDate}">
+                                    <p:calendar id="dueDate"
+                                                value="#{invoice.dueDate}" pattern="dd.MM.yyyy"
+                                                mask="true">
                                         <f:convertDateTime type="localDate" pattern="dd.MM.yyyy"/>
-                                    </h:outputText>
+                                    </p:calendar>
                                 </p:column>
 
                                 <p:column headerText="Description">
-                                    <h:outputText value="#{invoice.description}"/>
+                                    <p:inputText value="#{invoice.description}"/>
                                 </p:column>
 
-                                <p:column headerText="Creation Date">
-                                    <h:outputText value="#{invoice.creationDate}">
+
+                                <p:column headerText="Due Date">
+                                    <p:calendar id="creationDate"
+                                                value="#{invoice.creationDate}" pattern="dd.MM.yyyy"
+                                                mask="true">
                                         <f:convertDateTime type="localDate" pattern="dd.MM.yyyy"/>
-                                    </h:outputText>
+                                    </p:calendar>
                                 </p:column>
-
                                 <p:column>
                                     <p:commandButton update="invoiceList" value="Delete" icon="ui-icon-closethick"
                                                      action="#{invoicesBacking.delete(invoice)}"

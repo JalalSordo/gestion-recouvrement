@@ -33,13 +33,14 @@
                                 </p:column>
 
                                 <p:column headerText="Day of birth">
-                                    <h:outputText value="#{customer.dayOfBirth}">
+                                    <p:calendar id="dayOfBirth"
+                                                value="#{customer.dayOfBirth}" pattern="dd.MM.yyyy"
+                                                mask="true">
                                         <f:convertDateTime type="localDate" pattern="dd.MM.yyyy"/>
-                                    </h:outputText>
+                                    </p:calendar>
                                 </p:column>
-
                                 <p:column headerText="Customer ID">
-                                    <h:outputText value="#{customer.customerId}"/>
+                                    <p:inputText value="#{customer.customerId}"/>
                                 </p:column>
 
                                 <p:column>
